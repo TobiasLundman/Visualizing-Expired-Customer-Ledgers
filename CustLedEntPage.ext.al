@@ -67,9 +67,11 @@ pageextension 50133 NumberOfDaysExpired extends "Customer Ledger Entries"
     procedure ShowThresholdSetupNotification()
     var
         ThresholdSetupNotification: Notification;
+        a: Label 'You need to run the Threshold Setup:', Comment = 'You need to run the Threshold Setup:', MaxLength = 999, Locked = true;
+        b: Label 'Click here to run the ThresholdSetup', Comment = 'Action to run the Threshold Setup', MaxLength = 999, Locked = true;
     begin
-        ThresholdSetupNotification.Message('You need to run the Threshold Setup: ');
-        ThresholdSetupNotification.AddAction('Click here to run the ThresholdSetup', Codeunit::"ThresholdMgt", 'RunThresholdSetup');
+        ThresholdSetupNotification.Message(a);
+        ThresholdSetupNotification.AddAction(b, Codeunit::"ThresholdMgt", 'RunThresholdSetup');
         ThresholdSetupNotification.Send();
     end;
 
